@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marga — Наши услуги и Галерея</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f2f4f7;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* ======= Навигация ======= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background: rgba(0,0,0,0.6);
+      padding: 15px 0;
+      z-index: 100;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    header a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ======= Главная ======= */
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-top: 60px;
+    }
+
+    .overlay {
+      background: rgba(255,255,255,0.85);
+      padding: 40px 60px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    /* ======= Услуги ======= */
+    .services {
+      padding: 60px 10%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      background-color: #e8edf3;
+    }
+
+    .service-card {
+      background: white;
+      text-align: center;
+      padding: 30px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .service-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 15px;
+    }
+
+    /* ======= Галерея ======= */
+    .gallery {
+      padding: 60px 10%;
+      background: #fff;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid a img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-grid a img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ======= Lightbox ======= */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 200;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .close, .next, .prev {
+      position: absolute;
+      color: white;
+      font-size: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .close {
+      top: 30px;
+      right: 50px;
+      transform: none;
+      font-size: 45px;
+    }
+
+    .next {
+      right: 30px;
+    }
+
+    .prev {
+      left: 30px;
+    }
+
+    .close:hover, .next:hover, .prev:hover {
+      color: #ffd700;
+    }
+
+    /* ======= Контакты ======= */
+    .contacts {
+      background: #e8edf3;
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    .contacts h2 {
+      margin-bottom: 20px;
+    }
+
+    .contacts a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ======= Footer ======= */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#hero">Главная</a>
+  <a href="#gallery">Галерея</a>
+  <a href="#services">Услуги</a>
+  <a href="#contacts">Контакты</a>
+</header>
+
+<section class="hero" id="hero">
+  <div class="overlay">
+    <h1>КОМПАНИЯ MARGA</h1>
+    <p>Дизайн интерьеров, мебели и освещения с душой.</p>
+  </div>
+</section>
+
+<!-- ======= Галерея ======= -->
+<section class="gallery" id="gallery">
+  <h2>Наши проекты</h2>
+  <div class="gallery-grid">
+    <a href="#img1"><img src="https://images.unsplash.com/photo-1600585154206-3e3c6b76f79a" alt=""></a>
+    <a href="#img2"><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed" alt=""></a>
+    <a href="#img3"><img src="https://images.unsplash.com/photo-1598300050131-5e4a8c2f3e3d" alt=""></a>
+    <a href="#img4"><img src="https://images.unsplash.com/photo-1586105251261-72a756497a11" alt=""></a>
+    <a href="#img5"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb" alt=""></a>
+    <a href="#img6"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt=""></a>
+    <a href="#img7"><img src="https://images.unsplash.com/photo-1600585154356-596af9009e92" alt=""></a>
+    <a href="#img8"><img src="https://images.unsplash.com/photo-1600585154100-3b1d9d7bb1b4" alt=""></a>
+  </div>
+</section>
+
+<!-- ======= Lightbox фото ======= -->
+<div class="lightbox" id="img1">
+  <a href="#img8" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1600585154206-3e3c6b76f79a" alt="">
+  <a href="#img2" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img2">
+  <a href="#img1" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed" alt="">
+  <a href="#img3" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img3">
+  <a href="#img2" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1598300050131-5e4a8c2f3e3d" alt="">
+  <a href="#img4" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img4">
+  <a href="#img3" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11" alt="">
+  <a href="#img5" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img5">
+  <a href="#img4" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb" alt="">
+  <a href="#img6" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img6">
+  <a href="#img5" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" alt="">
+  <a href="#img7" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img7">
+  <a href="#img6" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1600585154356-596af9009e92" alt="">
+  <a href="#img8" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<div class="lightbox" id="img8">
+  <a href="#img7" class="prev">&#10094;</a>
+  <img src="https://images.unsplash.com/photo-1600585154100-3b1d9d7bb1b4" alt="">
+  <a href="#img1" class="next">&#10095;</a>
+  <a href="#" class="close">&times;</a>
+</div>
+
+<!-- ======= Услуги ======= -->
+<section class="services" id="services">
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/679/679922.png" alt="">
+    <h3>КРЕАТИВНАЯ ЛЕСТНИЦА</h3>
+    <p>Уникальные лестницы для современных интерьеров.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046874.png" alt="">
+    <h3>ДИЗАЙН КУХНИ</h3>
+    <p>Эргономичный и стильный дизайн под ваш вкус.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="">
+    <h3>УКРАШЕНИЕ ЛАМПЫ</h3>
+    <p>Световые решения, создающие атмосферу уюта.</p>
+  </div>
+  <div class="service-card">
+    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="">
+    <h3>ДЕКОР СТЕНЫ</h3>
+    <p>Авторские текстуры, панели и художественная роспись.</p>
+  </div>
+</section>
+
+<!-- ======= Контакты ======= -->
+<section class="contacts" id="contacts">
+  <h2>Контакты</h2>
+  <p>Email: <a href="mailto:info@marga.com">info@marga.com</a></p>
+  <p>Телефон: <a href="tel:+996555123456">+996 (555) 123-456</a></p>
+  <p>Адрес: Бишкек, ул. Центральная 12</p>
+</section>
+
+<footer>
+  © 2025 Marga | Все права защищены
+</footer>
+
+</body>
+                                                                                                     </html>
